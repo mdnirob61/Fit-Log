@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-[#202227] bg-black">
-            <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6">
+            <div className="flex h-20 items-center justify-between container mx-auto">
 
                 <Link href="/" className="flex items-center gap-2">
                     <Image
