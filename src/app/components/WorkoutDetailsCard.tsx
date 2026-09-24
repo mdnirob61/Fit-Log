@@ -3,6 +3,7 @@ import Image from "next/image";
 import { IWorkout } from "../types/workout";
 import { useContext, useState } from "react";
 import { FitLogContext } from "../context/WorkoutContext";
+import { toast } from "react-toastify";
 
 interface IWorkoutDetailsCardProps {
     workout: IWorkout;
@@ -18,7 +19,17 @@ const WorkoutDetailsCard = ({
         throw new Error("WorkoutDetailsCard must be used within FitLogContext.Provider");
     }
 
-    const { planCount, setPlanCount, saveCount, setSaveCount } = context;
+    const {
+        planCount,
+        setPlanCount,
+        saveCount,
+        setSaveCount,
+        planWorkouts,
+        setPlanWorkouts,
+        saveWorkouts,
+        setSaveWorkouts
+    } = context;
+
     const [planAdded, setPlanAdded] = useState(false);
     const [saved, setSaved] = useState(false);
 
@@ -26,16 +37,22 @@ const WorkoutDetailsCard = ({
         if (planAdded) {
             return;
         }
+
+        setPlanWorkouts([...planWorkouts, workout]);
         setPlanCount(planCount + 1);
         setPlanAdded(true);
+        toast.success("Added to today's plan");
     };
 
     const handleSave = () => {
         if (saved) {
             return;
         }
+
+        setSaveWorkouts([...saveWorkouts, workout]);
         setSaveCount(saveCount + 1);
         setSaved(true);
+        toast.success("Saved for later");
     };
     // console.log(planCount,'plan')
     // console.log(saveCount,'save')
@@ -171,8 +188,8 @@ const WorkoutDetailsCard = ({
                         <button onClick={() => handleAddToPlan()}
                             disabled={planAdded}
                             className={`flex-1 rounded-xl px-5 py-3 text-sm font-bold uppercase ${planAdded
-                                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                                    : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
+                                ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                                : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
                                 }`}>
                             {planAdded ? "Added to plan" : "Add to today's plan"}
                         </button>
