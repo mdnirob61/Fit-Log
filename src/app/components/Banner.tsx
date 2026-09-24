@@ -34,7 +34,7 @@ const Banner = () => {
                         src={banner}
                         alt="Person performing a workout"
                         width={300}
-                        height={500}
+                        height={300}
                         className="h-auto w-[220px] sm:w-[260px] lg:w-[300px]"
                         priority
                     ></Image>

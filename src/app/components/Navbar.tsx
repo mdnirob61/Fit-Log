@@ -3,9 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo.png";
+import { useContext } from "react";
+import { FitLogContext } from "../context/WorkoutContext";
 
 const Navbar = () => {
     const pathname = usePathname();
+    const { planCount, saveCount } = useContext(FitLogContext) ?? {
+        planCount: 0,
+        saveCount: 0,
+    };
 
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-[#202227] bg-black">
@@ -51,7 +57,7 @@ const Navbar = () => {
                         Plan
 
                         <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-[#ccff00] px-1 text-[9px] font-semibold text-black">
-                            0
+                            {planCount}
                         </span>
                     </Link>
 
@@ -59,7 +65,7 @@ const Navbar = () => {
                         href="/my-plan"
                         className="flex items-center gap-1 text-[#8b8d91] transition hover:text-white text-[0.8rem]">
                         Saved
-                        <span className="text-[#8b8d91]">0</span>
+                        <span className="text-[#8b8d91]">{saveCount}</span>
                     </Link>
                 </div>
             </div>
