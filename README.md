@@ -1,6 +1,6 @@
 <div align="center">
 
-# Project Name: FitLog <img width="35" height="35" alt="FitLog Logo" src="https://github.com/user-attachments/assets/8067788c-0e80-4d5e-836a-666649fc38f4" />
+# Project Name: Fit Log <img width="35" height="35" alt="FitLog Logo" src="https://github.com/user-attachments/assets/8067788c-0e80-4d5e-836a-666649fc38f4" />
 
 ### Track Your Workouts, Build Your Plan
 
