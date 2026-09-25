@@ -4,6 +4,7 @@ import { IWorkout } from "../types/workout";
 import { useContext, useState } from "react";
 import { FitLogContext } from "../context/WorkoutContext";
 import { toast } from "react-toastify";
+import { Plus, Bookmark } from "lucide-react";
 
 interface IWorkoutDetailsCardProps {
     workout: IWorkout;
@@ -26,31 +27,44 @@ const WorkoutDetailsCard = ({
         setSaveCount,
         planWorkouts,
         setPlanWorkouts,
-        saveWorkouts,
-        setSaveWorkouts
+        savedWorkouts,
+        setSavedWorkouts,
     } = context;
 
     const [planAdded, setPlanAdded] = useState(false);
     const [saved, setSaved] = useState(false);
 
     const handleAddToPlan = () => {
-        if (planAdded) {
+        const alreadyAdded = planWorkouts.some(
+            (item) => item.id === workout.id
+        );
+        if (alreadyAdded) {
+            toast.info("This workout is already in your plan.");
             return;
         }
 
-        setPlanWorkouts([...planWorkouts, workout]);
-        setPlanCount(planCount + 1);
+        if (planWorkouts.length >= 5) {
+            toast.warning("You can only add 5 workouts to today's plan.");
+            return;
+        }
+
+        setPlanWorkouts((previous) => [...previous, workout]);
+        setPlanCount((previous) => previous + 1);
         setPlanAdded(true);
         toast.success("Added to today's plan");
     };
 
     const handleSave = () => {
-        if (saved) {
+        const alreadySaved = savedWorkouts.some(
+            (item) => item.id === workout.id
+        );
+        if (alreadySaved) {
+            toast.info("This workout is already saved.");
             return;
         }
 
-        setSaveWorkouts([...saveWorkouts, workout]);
-        setSaveCount(saveCount + 1);
+        setSavedWorkouts((previous) => [...previous, workout]);
+        setSaveCount((previous) => previous + 1);
         setSaved(true);
         toast.success("Saved for later");
     };
@@ -185,24 +199,27 @@ const WorkoutDetailsCard = ({
 
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
-                        <button onClick={() => handleAddToPlan()}
+                        <button
+                            onClick={handleAddToPlan}
                             disabled={planAdded}
-                            className={`flex-1 rounded-xl px-5 py-3 text-sm font-bold uppercase ${planAdded
-                                ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                                : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
+                            className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold uppercase ${planAdded
+                                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                                    : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
                                 }`}>
+                            <Plus size={18} />
                             {planAdded ? "Added to plan" : "Add to today's plan"}
                         </button>
 
-                        <button onClick={() => handleSave()}
+                        <button
+                            onClick={handleSave}
                             disabled={saved}
-                            className={`flex-1 rounded-xl px-5 py-3 text-sm font-bold uppercase ${saved
-                                ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                                : "border border-[#C2F800] text-[#C2F800] hover:bg-[#C2F800] hover:text-black"
+                            className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold uppercase ${saved
+                                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                                    : "border border-[#C2F800] text-[#C2F800] hover:bg-[#C2F800] hover:text-black"
                                 }`}>
+                            <Bookmark size={18} />
                             {saved ? "Saved" : "Save for later"}
                         </button>
-
                     </div>
                 </div>
             </div>

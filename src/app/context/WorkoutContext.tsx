@@ -8,16 +8,22 @@ interface IWorkoutContext {
     saveCount: number;
 
     planWorkouts: IWorkout[];
-    saveWorkouts: IWorkout[];
+    savedWorkouts: IWorkout[];
+
+    doneWorkouts: number[];
 
     setPlanCount: React.Dispatch<React.SetStateAction<number>>;
     setSaveCount: React.Dispatch<React.SetStateAction<number>>;
 
     setPlanWorkouts: React.Dispatch<React.SetStateAction<IWorkout[]>>;
-    setSaveWorkouts: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+    setSavedWorkouts: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+
+    setDoneWorkouts: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const FitLogContext = createContext<IWorkoutContext | undefined>(undefined);
+export const FitLogContext = createContext<IWorkoutContext | undefined>(
+    undefined
+);
 
 const WorkoutProvider = ({ children }: { children: ReactNode }) => {
 
@@ -25,18 +31,26 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
     const [saveCount, setSaveCount] = useState(0);
 
     const [planWorkouts, setPlanWorkouts] = useState<IWorkout[]>([]);
-    const [saveWorkouts, setSaveWorkouts] = useState<IWorkout[]>([]);
+    const [savedWorkouts, setSavedWorkouts] = useState<IWorkout[]>([]);
+
+    const [doneWorkouts, setDoneWorkouts] = useState<number[]>([]);
 
     const sharedData = {
         planCount,
         saveCount,
+
         planWorkouts,
-        saveWorkouts,
+        savedWorkouts,
+
+        doneWorkouts,
 
         setPlanCount,
         setSaveCount,
+
         setPlanWorkouts,
-        setSaveWorkouts
+        setSavedWorkouts,
+
+        setDoneWorkouts
     };
 
     return (
