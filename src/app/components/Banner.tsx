@@ -17,7 +17,7 @@ const Banner = () => {
                         EVERY SET.
                     </h1>
 
-                    <p className="mt-6 max-w-[460px] text-sm leading-6 text-[#9CA3AF] sm:text-base">
+                    <p className="mt-6 max-w-115 text-sm leading-6 text-[#9CA3AF] sm:text-base">
                         FitLog is a dark, no-nonsense gym companion: pick a lift, lock it into today&apos;s plan, and watch the week&apos;s work add up.
                     </p>
 
@@ -35,7 +35,7 @@ const Banner = () => {
                         alt="Person performing a workout"
                         width={300}
                         height={300}
-                        className="h-auto w-[220px] sm:w-[260px] lg:w-[300px]"
+                        className="h-auto w-55 sm:w-65 lg:w-75"
                         priority
                     ></Image>
                 </div>

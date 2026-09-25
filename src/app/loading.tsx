@@ -2,8 +2,8 @@ import React from 'react';
 
 const HomePageLoading = () => {
     return (
-        <div className="flex min-h-[60vh] items-center justify-center">
-            <p className="text-5xl font-bold text-white">
+        <div className="flex min-h-[60vh] items-center justify-center px-4">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center">
                 Home Page Loading....
             </p>
         </div>

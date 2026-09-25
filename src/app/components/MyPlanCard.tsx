@@ -35,40 +35,43 @@ const MyPlanCard = ({ workout, type }: IMyPlanCardProps) => {
         if (doneWorkouts.includes(workout.id)) {
             return;
         }
-        setDoneWorkouts((previous) => [...doneWorkouts, workout.id])
-        toast.success("Marked");
-    }
+
+        setDoneWorkouts([...doneWorkouts, workout.id]);
+        toast.success("Marked as done");
+    };
 
     const handlePlanRemove = () => {
         setPlanWorkouts((previous) =>
             previous.filter((item) => item.id !== workout.id)
         );
+
         setPlanCount((previous) => previous - 1);
         toast.error("Removed from plan");
     };
 
     const handleSavedRemove = () => {
-        setSavedWorkouts((previous) => previous.filter((item) => item.id !== workout.id));
+        setSavedWorkouts((previous) =>
+            previous.filter((item) => item.id !== workout.id)
+        );
+
         setSaveCount((previous) => previous - 1);
         toast.error("Removed from saved");
-    }
+    };
 
     const isDone = doneWorkouts.includes(workout.id);
 
     return (
-        <div className="flex items-center gap-3 border border-[#25282E] rounded-2xl bg-[#101114] p-3">
+        <div className="flex flex-col gap-4 rounded-2xl border border-[#25282E] bg-[#101114] p-3 sm:flex-row sm:items-center">
 
-            {/* Image */}
-            <div className="relative h-20 w-30 shrink-0 overflow-hidden rounded-xl">
+            <div className="relative h-44 w-full shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-30">
                 <Image
                     src={workout.image}
                     alt={workout.name}
                     fill
                     className="object-cover"
-                ></Image>
+                />
             </div>
 
-            {/* Workout Info */}
             <div className="min-w-0 flex-1">
 
                 <h2 className="truncate text-[15px] font-bold uppercase text-white">
@@ -79,18 +82,18 @@ const MyPlanCard = ({ workout, type }: IMyPlanCardProps) => {
                     {workout.equipment}
                 </p>
 
-                <div className="mt-1 flex items-center gap-3 text-[12px] text-[#9CA3AF]">
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-[#9CA3AF]">
                     <span>◷ {workout.duration} min</span>
                     <span>● {workout.caloriesBurned} kcal</span>
                     <span>★ {workout.rating}</span>
                 </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:shrink-0">
 
                 <Link
                     href={`/workouts/${workout.id}`}
-                    className="rounded-full border border-[#25282E] px-4 py-1.5 text-[13px] text-white">
+                    className="flex-1 rounded-full border border-[#25282E] px-4 py-2 text-center text-[13px] text-white sm:flex-none">
                     View Details
                 </Link>
 
@@ -98,31 +101,30 @@ const MyPlanCard = ({ workout, type }: IMyPlanCardProps) => {
                     <button
                         onClick={handleMarkAsDone}
                         disabled={isDone}
-                        className={`rounded-full px-4 py-1.5 text-[13px] font-bold ${isDone
-                            ? "bg-[#25282E] text-[#9CA3AF]"
-                            : "bg-[#C2F800] text-black"
+                        className={`flex-1 rounded-full px-4 py-2 text-[13px] font-bold sm:flex-none ${isDone
+                                ? "bg-[#25282E] text-[#9CA3AF]"
+                                : "bg-[#C2F800] text-black"
                             }`}>
                         {isDone ? "✓ Done" : "✓ Mark as Done"}
                     </button>
                 )}
 
                 {type === "plan" ? (
-                        <button
-                            onClick={() => handlePlanRemove()}
-                            className="px-1 text-3xl text-[#6B7280]">
-                            ×
-                        </button>
-                    ) : (
-                        <button
-                            onClick={() => handleSavedRemove()}
-                            className="px-1 text-3xl text-[#6B7280]">
-                            ×
-                        </button>
-                    )
-                }
-
+                    <button
+                        onClick={handlePlanRemove}
+                        className="px-2 text-3xl leading-none text-[#6B7280]">
+                        ×
+                    </button>
+                ) : (
+                    <button
+                        onClick={handleSavedRemove}
+                        className="px-2 text-3xl leading-none text-[#6B7280]">
+                        ×
+                    </button>
+                )}
 
             </div>
+
         </div>
     );
 };

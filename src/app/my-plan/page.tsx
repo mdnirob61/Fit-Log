@@ -120,9 +120,7 @@ const MyPlanPage = () => {
                 </select>
             </div>
 
-            {/* Tabs */}
             <div className="tabs tabs-box mt-9">
-                {/* Today's Plan */}
                 <input
                     type="radio"
                     name="my_tabs_6"
@@ -134,7 +132,7 @@ const MyPlanPage = () => {
 
                 <div className="tab-content p-4">
                     {sortedPlanWorkouts.length === 0 ? (
-                        <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
+                        <div className="flex min-h-75 flex-col items-center justify-center text-center">
                             <h2 className="text-2xl font-bold text-white">
                                 NOTHING HERE YET
                             </h2>
@@ -162,7 +160,6 @@ const MyPlanPage = () => {
                     )}
                 </div>
 
-                {/* Saved */}
                 <input
                     type="radio"
                     name="my_tabs_6"
@@ -173,7 +170,7 @@ const MyPlanPage = () => {
 
                 <div className="tab-content p-4">
                     {sortedSavedWorkouts.length === 0 ? (
-                        <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
+                        <div className="flex min-h-75 flex-col items-center justify-center text-center">
                             <h2 className="text-2xl font-bold text-white">
                                 NOTHING SAVED HERE YET
                             </h2>

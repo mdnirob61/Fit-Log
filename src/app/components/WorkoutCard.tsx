@@ -19,8 +19,8 @@ const WorkoutCard = ({ workout }: IWorkoutCardProps) => {
                         alt={workout.name}
                         height={400}
                         width={400}
-                        // fill
-                        className="object-cover transition duration-500 group-hover:scale-105" />
+                        className="object-cover transition duration-500 group-hover:scale-105"
+                    ></Image>
                 </div>
 
                 <div className="p-4 sm:p-5">

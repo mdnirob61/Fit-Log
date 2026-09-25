@@ -21,9 +21,7 @@ const WorkoutDetailsCard = ({
     }
 
     const {
-        planCount,
         setPlanCount,
-        saveCount,
         setSaveCount,
         planWorkouts,
         setPlanWorkouts,
@@ -80,7 +78,8 @@ const WorkoutDetailsCard = ({
                         src={workout.image}
                         alt={workout.name}
                         fill
-                        className="object-cover" />
+                        className="object-cover"
+                    ></Image>
                 </div>
 
                 <div className="p-5 sm:p-8 lg:p-10">
@@ -203,8 +202,8 @@ const WorkoutDetailsCard = ({
                             onClick={handleAddToPlan}
                             disabled={planAdded}
                             className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold uppercase ${planAdded
-                                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                                    : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
+                                ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                                : "bg-[#C2F800] text-black hover:bg-[#d4ff4d]"
                                 }`}>
                             <Plus size={18} />
                             {planAdded ? "Added to plan" : "Add to today's plan"}
@@ -214,8 +213,8 @@ const WorkoutDetailsCard = ({
                             onClick={handleSave}
                             disabled={saved}
                             className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold uppercase ${saved
-                                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                                    : "border border-[#C2F800] text-[#C2F800] hover:bg-[#C2F800] hover:text-black"
+                                ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                                : "border border-[#C2F800] text-[#C2F800] hover:bg-[#C2F800] hover:text-black"
                                 }`}>
                             <Bookmark size={18} />
                             {saved ? "Saved" : "Save for later"}
