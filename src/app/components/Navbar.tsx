@@ -72,7 +72,7 @@ const Navbar = () => {
                         href="/my-plan"
                         className="flex items-center gap-1 text-[0.8rem] text-[#8b8d91] transition hover:text-white">
                         Saved
-                        <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-[#ccff00] px-1 text-[9px] font-semibold text-black">
+                        <span className="flex h-4 min-w-4 items-center justify-center rounded-full outline px-1 text-[9px] text-white">
                             {saveCount}
                         </span>
                     </Link>
