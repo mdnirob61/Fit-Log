@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import banner from "@/assets/banner.png";
+import { ArrowDown } from "lucide-react";
 
 const Banner = () => {
     return (
@@ -22,10 +23,10 @@ const Banner = () => {
                     </p>
 
                     <Link
-                        href="#library">
-                        <button className="mt-7 flex w-fit items-center gap-2 rounded-md bg-[#C2F800] px-5 py-3 text-xs font-bold text-black transition hover:bg-[#d4ff33] cursor-pointer">
-                            BROWSE WORKOUTS ↓
-                        </button>
+                        href="#library"
+                        className="mt-7 flex w-fit items-center gap-2 rounded-md bg-[#C2F800] px-5 py-3 text-xs font-bold text-black hover:bg-[#d4ff33] cursor-pointer transition">
+                        BROWSE WORKOUTS
+                        <ArrowDown size={16} />
                     </Link>
                 </div>
 

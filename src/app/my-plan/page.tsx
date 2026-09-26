@@ -181,7 +181,7 @@ const MyPlanPage = () => {
 
                             <Link
                                 href="/"
-                                className="mt-6 rounded-lg bg-[#C2F800] px-5 py-3 text-sm font-bold text-black">
+                                className="mt-6 rounded-3xl bg-[#C2F800] px-5 py-3 text-sm font-bold text-black">
                                 Go to workouts
                             </Link>
                         </div>
