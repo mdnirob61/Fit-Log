@@ -2,7 +2,7 @@ import WorkoutCard from './WorkoutCard';
 import { IWorkout } from '../types/workout';
 
 const getWorkouts = async () => {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/fitlog`);
 
     if (!res.ok) {
         throw new Error("Failed to fetch workouts");
